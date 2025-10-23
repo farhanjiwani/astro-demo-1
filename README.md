@@ -1,4 +1,17 @@
-# Astro Starter Kit: Minimal
+# Astro Demo 🚀
+
+Just doing the tutorial in the Astro docs.
+I will post my [notes](./notes.md) here as well as I go.
+
+So far, it's pretty great! 💪🏽
+
+```json
+"dependencies": {
+    "astro": "^5.14.8"
+}
+```
+
+## Astro Starter Kit: Minimal
 
 ```sh
 npm create astro@latest -- --template minimal
