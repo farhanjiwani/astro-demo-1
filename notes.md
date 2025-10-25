@@ -149,6 +149,67 @@ const skillColor = "crimson"
 
 ### Build w/ Astro Components
 
+-   `.astro` files outside of `/src/pages` will not become pages but will still generate HTML
+    -   `/src/components`
+-   `/src/components/Navigation.astro`:
+    ```jsx
+    ---
+    ---
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+    ```
+-   in your page:
+    ```jsx
+    ---
+    import Navigation from  '../components/Navigation.astro';
+    ---
+    <Navigation />
+    ```
+
+#### Using Variables
+
+```jsx
+---
+const platform = "github"
+const username = "farhanjiwani"
+---
+<footer>
+	<p>Learn more about my projects on <a href={`https://www.${platform}.com/${username}`}>{platform}</a></p>
+</footer>
+```
+
+#### Using Props
+
+-   pass as attributes
+-   attributes will become properties of `Astro.props`
+
+```jsx
+---
+const { platform, username } = Astro.props;
+---
+<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+
+<style>
+    a {
+        padding: 0.5rem 1rem;
+        color: white;
+        background-color: #4c1d95;
+        text-decoration: none;
+    }
+</style>
+```
+
+#### Using Scripts
+
+-   can add `<script>` directly in template
+-   then just import `.js` files
+-   after running the build, these scripts will be the only JavaScript on the page, as the rest of the JS was used during compile time and discarded
+
+```jsx
+<script>import "../scripts/menu.js";</script>
+```
+
 ### Query and Work w/ Local Files
 
 ### Add Interactivity
